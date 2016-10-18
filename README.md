@@ -1,6 +1,6 @@
 # MaxStarterKit
 
-Ce répertoire fourni une architecture de base pour écrire des externals pour [Max](https://cycling74.com/products/max).
+Ce répertoire fourni une architecture de base pour écrire des externals pour [Max](https://cycling74.com/products/max) (v6.1.9 ou plus récent).
 
 ## Installation
 
@@ -66,13 +66,7 @@ Pour compiler directement en ligne de commandes :
 ## Pour ajouter un external:
 
 - Dupliquer un dossier existant dans le répertoire _source/projects/_
-- renommer le dossier copié ex : _my.objectname_tilde_
-- Modifier ensuite le nom de l'external dans le fichier 'CMakeLists.txt' en remplaçant le nom de l'ancien objet par le nouveau (ex: _my.objectname~_) à la ligne suivante :
-
-```cmake
-set(PRODUCT_NAME my.objectname~)
-```
-
+- renommer le dossier copié ex : _my.objectname_ pour un objet max ou _my.objectname_tilde_ pour un objet dsp.
 - Générer à nouveau le projet en utilisant la commande cmake dans le dossier _build_ puis ouvrez le pour modifier le code source et compiler.
 
   Les externals compilés se trouvent dans le répertoire _externals_.
@@ -80,3 +74,7 @@ set(PRODUCT_NAME my.objectname~)
 ## Crédits
 
 - [max-api](https://github.com/Cycling74/max-api) => @cycling74
+
+## Liens
+
+- [max-sdk](https://cycling74.com/sdk/MaxSDK-7.1.0/html/index.html)
