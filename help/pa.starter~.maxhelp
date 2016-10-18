@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 36.0, 79.0, 753.0, 531.0 ],
+		"rect" : [ 36.0, 79.0, 445.0, 349.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,11 +38,25 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"bubble" : 1,
+					"id" : "obj-5",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 181.0, 190.5, 165.0, 37.0 ],
+					"style" : "",
+					"text" : "Nothing exiting, just a starter for audio object !"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"border" : 0,
 					"filename" : "helpdetails.js",
 					"id" : "obj-33",
 					"ignoreclick" : 1,
-					"jsarguments" : [ "dummy~" ],
+					"jsarguments" : [ "pa.starter~" ],
 					"maxclass" : "jsui",
 					"numinlets" : 1,
 					"numoutlets" : 1,
@@ -63,7 +77,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "signal", "float" ],
-					"patching_rect" : [ 185.0, 272.0, 56.0, 22.0 ],
+					"patching_rect" : [ 46.0, 241.0, 56.0, 22.0 ],
 					"sig" : 0.0,
 					"style" : ""
 				}
@@ -76,7 +90,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 246.0, 177.0, 53.0, 22.0 ],
+					"patching_rect" : [ 107.0, 146.0, 53.0, 22.0 ],
 					"style" : "",
 					"text" : "sig~ 2.6"
 				}
@@ -89,7 +103,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 185.0, 177.0, 43.0, 22.0 ],
+					"patching_rect" : [ 46.0, 146.0, 43.0, 22.0 ],
 					"style" : "",
 					"text" : "sig~ 1"
 				}
@@ -102,9 +116,9 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 185.0, 229.0, 80.0, 22.0 ],
+					"patching_rect" : [ 46.0, 198.0, 80.0, 22.0 ],
 					"style" : "",
-					"text" : "dummy~"
+					"text" : "pa.starter~"
 				}
 
 			}
@@ -144,7 +158,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "dummy~.mxo",
+				"name" : "pa.starter~.mxo",
 				"type" : "iLaX"
 			}
  ],
