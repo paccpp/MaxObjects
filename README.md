@@ -2,7 +2,7 @@
 
 Ce répertoire regroupe les externals pour [Max](https://cycling74.com/products/max) du cours [paccpp](https://github.com/paccpp/paccpp).
 
-Pour installer ce répertoire et compiler les externals, se reporter  répertoire [MaxStarterKit](https://github.com/paccpp/MaxStarterKit) qui possède la même structure.
+Pour installer ce répertoire et compiler les externals, se reporter au répertoire [MaxStarterKit](https://github.com/paccpp/MaxStarterKit) qui possède la même structure.
 
 ## Objets
 
