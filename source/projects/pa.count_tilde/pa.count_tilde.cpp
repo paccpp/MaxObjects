@@ -133,6 +133,8 @@ void* pa_count_tilde_new(t_symbol *name, long argc, t_atom *argv)
             x->m_max = atom_getfloat(argv+1);
         }
         
+        pa_count_tilde_setminmax(x, x->m_min, x->m_max);
+        
         proxy_new((t_object*)x, 1, x->m_proxy);
         outlet_new(x, "signal");
     }
