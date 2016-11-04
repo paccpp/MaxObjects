@@ -4,7 +4,7 @@
  // WARRANTIES, see the file, "LICENSE.txt," in this distribution.
  */
 
-// A phasor for Max signal objects
+//! @brief Outputs a ramp between 0. and 1. at a given frequency
 
 // header for msp objects
 #include "c74_msp.h"
@@ -121,7 +121,7 @@ void pa_phasor_tilde_assist(t_pa_phasor_tilde* x, void* unused,
     }
 }
 
-void* pa_phasor_tilde_new(void)
+void* pa_phasor_tilde_new(t_symbol *name, long argc, t_atom *argv)
 {
     t_pa_phasor_tilde* x = (t_pa_phasor_tilde*)object_alloc(this_class);
     
@@ -130,6 +130,12 @@ void* pa_phasor_tilde_new(void)
         x->m_phase = 0.;
         x->m_freq = 0.;
         x->m_phase_inc = 0.;
+        
+        if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
+        {
+            // set freq and phase_inc
+            pa_phasor_tilde_float(x, atom_getfloat(argv));
+        }
         
         dsp_setup((t_pxobject*)x, 1);
         outlet_new(x, "signal");
