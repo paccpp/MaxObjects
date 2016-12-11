@@ -4,7 +4,7 @@
  // WARRANTIES, see the file, "LICENSE.txt," in this distribution.
  */
 
-//! @brief Access a Max buffer~
+//! @brief Access a Max buffer~ object
 
 // header for msp objects
 #include "c74_msp.h"
@@ -44,7 +44,7 @@ void pa_readbuffer1_dsp_perform(t_pa_readbuffer1_tilde *x, t_object *dsp64,
                 while(index < 0) { index += size; }
                 while(index >= size) { index -= size; }
                 
-                if(nc > 1) { index *= nc; }
+                index *= nc;
                 
                 *out++ = tab[index];
             }
