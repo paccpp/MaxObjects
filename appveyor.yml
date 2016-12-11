@@ -19,7 +19,7 @@ build_script:
   - mkdir build
   - cd build
   - cmake -G "%VS_FULL%" %CUSTOM_FLAG% .. > %APPVEYOR_BUILD_FOLDER%\configure.log
-  - cmake --build . --config Release > %APPVEYOR_BUILD_FOLDER%\build.log
+  - cmake --build .. --config Release > %APPVEYOR_BUILD_FOLDER%\build.log
 
 artifacts:
   - name: Log files
