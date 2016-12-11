@@ -57,7 +57,7 @@ void pa_delay5_tilde_create_buffer(t_pa_delay5_tilde* x)
 
 //! @brief returns a buffer value at a given index position.
 //! @details idx will be wrapped between low and high buffer boundaries in a circular way.
-double get_buffer_value(t_pa_delay5_tilde* x, int idx)
+double get_buffer_value(t_pa_delay5_tilde* x, t_atom_long idx)
 {
     const t_atom_long buffersize = x->m_buffersize;
     
@@ -82,7 +82,7 @@ void pa_delay5_tilde_perform64(t_pa_delay5_tilde* x, t_object* dsp64,
     double* buffer = x->m_buffer;
     const t_atom_long buffersize = x->m_buffersize;
     double sample_to_write = 0.f;
-    int reader;
+    t_atom_long reader;
     
     for(int i = 0; i < vecsize; ++i)
     {
@@ -104,7 +104,7 @@ void pa_delay5_tilde_perform64(t_pa_delay5_tilde* x, t_object* dsp64,
             // clip delay size to buffersize - 1
             if(delay_size_samps >= buffersize)
             {
-                delay_size_samps = buffersize - 1;
+                delay_size_samps = (double)(buffersize - 1);
             }
             else if(delay_size_samps < 1.) // read first implementation : 0 samps delay = max delay
             {
@@ -114,7 +114,7 @@ void pa_delay5_tilde_perform64(t_pa_delay5_tilde* x, t_object* dsp64,
             // extract the fractional part
             delta = delay_size_samps - (int)delay_size_samps;
             
-            reader = x->m_writer_playhead - (int)delay_size_samps;
+            reader = x->m_writer_playhead - (t_atom_long)delay_size_samps;
          
             // Reading our buffer.
             y1 = get_buffer_value(x, reader);
@@ -204,7 +204,7 @@ void* pa_delay5_tilde_new(t_symbol *name, long argc, t_atom *argv)
         
         x->m_delay_sizes = (double*)malloc(sizeof(double) * x->m_number_of_readers);
         
-        dsp_setup((t_pxobject*)x, x->m_number_of_readers + 1);
+        dsp_setup((t_pxobject*)x, (long)(x->m_number_of_readers + 1));
         for(int i = 0; i < x->m_number_of_readers; ++i)
         {
             outlet_new(x, "signal");

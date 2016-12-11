@@ -33,12 +33,12 @@ void pa_clip_tilde_set_minmax(t_pa_clip_tilde *x, t_atom_float min, t_atom_float
     }
 }
 
-void pa_clip_tilde_set_min(t_pa_clip_tilde *x, double value)
+void pa_clip_tilde_set_min(t_pa_clip_tilde *x, t_atom_float value)
 {
     pa_clip_tilde_set_minmax(x, value, x->m_max);
 }
 
-void pa_clip_tilde_set_max(t_pa_clip_tilde *x, double value)
+void pa_clip_tilde_set_max(t_pa_clip_tilde *x, t_atom_float value)
 {
     pa_clip_tilde_set_minmax(x, x->m_min, value);
 }

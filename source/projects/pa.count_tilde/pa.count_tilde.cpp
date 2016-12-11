@@ -68,7 +68,7 @@ void pa_count_tilde_perform64(t_pa_count_tilde* x, t_object* dsp64,
         }
         
         // set the output sample value then increment output pointer
-        *out++ = value;
+        *out++ = (double)value;
         
         // increment the value
         ++value;

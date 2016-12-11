@@ -54,13 +54,13 @@ void pa_delay4_tilde_create_buffer(t_pa_delay4_tilde* x)
 
 //! @brief returns a buffer value at a given index position.
 //! @details idx will be wrapped between low and high buffer boundaries in a circular way.
-double get_buffer_value(t_pa_delay4_tilde* x, long idx)
+double get_buffer_value(t_pa_delay4_tilde* x, t_atom_long idx)
 {
     const t_atom_long buffersize = x->m_buffersize;
     
     // wrap idx between low and high buffer boundaries.
-    while(idx < 0) idx += buffersize;
-    while(idx >= buffersize) idx -= buffersize;
+    while(idx < 0) { idx += buffersize; }
+    while(idx >= buffersize) { idx -= buffersize; }
     
     return x->m_buffer[idx];
 }
@@ -83,7 +83,7 @@ void pa_delay4_tilde_perform64(t_pa_delay4_tilde* x, t_object* dsp64,
     double* buffer = x->m_buffer;
     const t_atom_long buffersize = x->m_buffersize;
     double sample_to_write = 0.f;
-    long reader;
+    t_atom_long reader;
     
     while(vecsize--)
     {
@@ -96,7 +96,7 @@ void pa_delay4_tilde_perform64(t_pa_delay4_tilde* x, t_object* dsp64,
         // clip delay size to buffersize - 1
         if(delay_size_samps >= buffersize)
         {
-            delay_size_samps = buffersize - 1;
+            delay_size_samps = (double)(buffersize - 1);
         }
         else if(delay_size_samps < 1.) // read first implementation : 0 samps delay = max delay
         {
@@ -104,9 +104,9 @@ void pa_delay4_tilde_perform64(t_pa_delay4_tilde* x, t_object* dsp64,
         }
         
         // extract the fractional part
-        delta = delay_size_samps - (int)delay_size_samps;
+        delta = delay_size_samps - (t_atom_long)delay_size_samps;
         
-        reader = x->m_writer_playhead - (int)delay_size_samps;
+        reader = x->m_writer_playhead - (t_atom_long)delay_size_samps;
         
         // Reading our buffer.
         y1 = get_buffer_value(x, reader);
