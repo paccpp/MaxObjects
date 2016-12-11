@@ -44,7 +44,7 @@ void pa_osc3_tilde_fill_cos_table()
 void pa_osc3_tilde_reset_phase(t_pa_osc3_tilde *x, double d)
 {
     const int tsize = (OSC3_COSTABLE_SIZE-1);
-    float phase = d * tsize;
+    double phase = d * tsize;
     
     // wrap between table boundaries
     while(phase >= tsize) { phase -= tsize; }

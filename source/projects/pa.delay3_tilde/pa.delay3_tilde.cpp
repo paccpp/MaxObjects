@@ -18,10 +18,10 @@ struct t_pa_delay3_tilde
     t_pxobject  m_obj;
     
     double*     m_buffer;
-    size_t      m_buffersize;
+    t_atom_long m_buffersize;
     
-    size_t      m_writer_playhead;
-    size_t      m_reader_playhead;
+    t_atom_long m_writer_playhead;
+    t_atom_long m_reader_playhead;
 };
 
 void pa_delay3_tilde_delete_buffer(t_pa_delay3_tilde* x)
@@ -54,9 +54,9 @@ void pa_delay3_tilde_create_buffer(t_pa_delay3_tilde* x)
     x->m_buffer = (double*)calloc(x->m_buffersize, sizeof(double));
 }
 
-void pa_delay3_set_size_in_samps(t_pa_delay3_tilde *x, long l)
+void pa_delay3_set_size_in_samps(t_pa_delay3_tilde *x, t_atom_long l)
 {
-    long delay_size = l;
+    t_atom_long delay_size = l;
     
     // clip to buffersize max
     if(delay_size > x->m_buffersize)
@@ -68,7 +68,7 @@ void pa_delay3_set_size_in_samps(t_pa_delay3_tilde *x, long l)
         delay_size = 1;
     }
     
-    t_int reader_playhead = x->m_writer_playhead - delay_size;
+    t_atom_long reader_playhead = x->m_writer_playhead - delay_size;
     
     if(reader_playhead < 0) reader_playhead += x->m_buffersize;
     
@@ -137,7 +137,7 @@ void* pa_delay3_tilde_new(t_symbol *name, long argc, t_atom *argv)
         x->m_writer_playhead = 0;
         x->m_reader_playhead = 0;
         
-        int buffersize = sys_getsr() * 0.1; // default to 100ms
+        t_atom_long buffersize = (t_atom_long)(sys_getsr() * 0.1); // default to 100ms
         
         if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
         {

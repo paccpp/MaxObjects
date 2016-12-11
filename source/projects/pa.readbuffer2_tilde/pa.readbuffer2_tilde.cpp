@@ -45,7 +45,7 @@ void pa_readbuffer2_dsp_perform(t_pa_readbuffer2_tilde *x, t_object *dsp64,
 
     // buffer
     float *tab;
-    long buffersize, nc;
+    t_atom_long buffersize, nc;
 
     t_buffer_obj* buffer = buffer_ref_getobject(x->m_buffer_reference);
     if(buffer)
@@ -118,12 +118,17 @@ void pa_readbuffer2_dsp_prepare(t_pa_readbuffer2_tilde *x, t_object *dsp64,
     dsp_add64(dsp64, (t_object *)x, (t_perfroutine64)pa_readbuffer2_dsp_perform, 0, NULL);
 }
 
-void pa_readbuffer2_assist(t_pa_readbuffer2_tilde *x, void *b, long m, long a, char *s)
+void pa_readbuffer2_assist(t_pa_readbuffer2_tilde* x, void* unused,
+                           t_assist_function io, long index, char* string_dest)
 {
-    if (m == ASSIST_OUTLET)
-        sprintf(s,"(signal) Phase between 0. and 1.");
+    if(io == ASSIST_OUTLET)
+    {
+        strncpy(string_dest, "(signal) Output", ASSIST_STRING_MAXSIZE);
+    }
     else
-        sprintf(s,"(signal) Sample");
+    {
+        strncpy(string_dest,"(signal) Read speed", ASSIST_STRING_MAXSIZE);
+    }
 }
 
 t_max_err pa_readbuffer2_notify(t_pa_readbuffer2_tilde *x, t_symbol *s, t_symbol *msg, void *sender, void *data)

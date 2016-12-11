@@ -26,7 +26,7 @@ void pa_readbuffer1_dsp_perform(t_pa_readbuffer1_tilde *x, t_object *dsp64,
     double *out = outs[0];
     int n = sampleframes;
     float *tab;
-    long index, size, nc;
+    t_atom_long index, size, nc;
     
     t_buffer_obj* buffer = buffer_ref_getobject(x->m_buffer_reference);
     if(buffer)
@@ -76,12 +76,17 @@ void pa_readbuffer1_dsp_prepare(t_pa_readbuffer1_tilde *x, t_object *dsp64,
     dsp_add64(dsp64, (t_object *)x, (t_perfroutine64)pa_readbuffer1_dsp_perform, 0, NULL);
 }
 
-void pa_readbuffer1_assist(t_pa_readbuffer1_tilde *x, void *b, long m, long a, char *s)
+void pa_readbuffer1_assist(t_pa_readbuffer1_tilde* x, void* unused,
+                           t_assist_function io, long index, char* string_dest)
 {
-    if (m == ASSIST_OUTLET)
-        sprintf(s,"(signal) Phase between 0. and 1.");
+    if(io == ASSIST_OUTLET)
+    {
+        strncpy(string_dest, "(signal) Output", ASSIST_STRING_MAXSIZE);
+    }
     else
-        sprintf(s,"(signal) Sample");
+    {
+        strncpy(string_dest,"(signal) Sample", ASSIST_STRING_MAXSIZE);
+    }
 }
 
 t_max_err pa_readbuffer1_notify(t_pa_readbuffer1_tilde *x, t_symbol *s, t_symbol *msg, void *sender, void *data)

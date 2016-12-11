@@ -13,16 +13,16 @@ static t_class* this_class = nullptr;
 
 struct t_pa_count_tilde
 {
-    t_pxobject m_obj;
+    t_pxobject  m_obj;
     
-    long       m_min;
-    long       m_max;
-    long       m_value;
+    t_atom_long m_min;
+    t_atom_long m_max;
+    t_atom_long m_value;
     
-    long*      m_proxy;
+    long*       m_proxy;
 };
 
-void pa_count_tilde_setminmax(t_pa_count_tilde* x, long min, long max)
+void pa_count_tilde_setminmax(t_pa_count_tilde* x, t_atom_long min, t_atom_long max)
 {
     if(min > max) min = max;
     if(max < min) max = min;
@@ -58,7 +58,7 @@ void pa_count_tilde_perform64(t_pa_count_tilde* x, t_object* dsp64,
     double* out = outs[0];
     
     // cache our value
-    int value = x->m_value;
+    t_atom_long value = x->m_value;
     
     while(vecsize--)
     {
@@ -68,7 +68,7 @@ void pa_count_tilde_perform64(t_pa_count_tilde* x, t_object* dsp64,
         }
         
         // set the output sample value then increment output pointer
-        *out++ = value;
+        *out++ = (double)value;
         
         // increment the value
         ++value;
@@ -124,13 +124,13 @@ void* pa_count_tilde_new(t_symbol *name, long argc, t_atom *argv)
         // first argument set the minimum count value
         if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
         {
-            x->m_min = atom_getfloat(argv);
+            x->m_min = atom_getlong(argv);
         }
         
         // second argument set the maximum count value
         if(argc >= 2 && (atom_gettype(argv+1) == A_FLOAT || atom_gettype(argv+1) == A_LONG))
         {
-            x->m_max = atom_getfloat(argv+1);
+            x->m_max = atom_getlong(argv+1);
         }
         
         pa_count_tilde_setminmax(x, x->m_min, x->m_max);

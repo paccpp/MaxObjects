@@ -1,5 +1,7 @@
 # MaxObjects
 
+[![Mac Build Status](https://travis-ci.org/paccpp/MaxObjects.svg?branch=master)](https://travis-ci.org/paccpp/MaxObjects) [![Windows Build status](https://ci.appveyor.com/api/projects/status/iisy1l3mqrxydwds/branch/master?svg=true)](https://ci.appveyor.com/project/eliottparis/maxobjects)
+
 Ce répertoire regroupe les externals pour [Max](https://cycling74.com/products/max) du cours [paccpp](https://github.com/paccpp/paccpp).
 
 Pour installer ce répertoire et compiler les externals, se reporter au répertoire [MaxStarterKit](https://github.com/paccpp/MaxStarterKit) qui possède la même structure.
@@ -26,4 +28,5 @@ Pour installer ce répertoire et compiler les externals, se reporter au réperto
 
 ## Liens
 
+- paccpp wiki => ["Anatomie-d'un-objet-Max"](https://github.com/paccpp/paccpp/wiki/Anatomie-d'un-objet-Max)
 - [max-sdk](https://cycling74.com/sdk/MaxSDK-7.1.0/html/index.html)
