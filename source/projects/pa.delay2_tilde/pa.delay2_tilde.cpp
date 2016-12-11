@@ -19,7 +19,7 @@ struct t_pa_delay2_tilde
     t_pxobject  m_obj;
     
     double*     m_buffer;
-    int         m_buffersize;
+    t_atom_long m_buffersize;
     int         m_count;
 };
 
@@ -131,7 +131,7 @@ void* pa_delay2_tilde_new(t_symbol *name, long argc, t_atom *argv)
         x->m_buffer = nullptr;
         x->m_count = 0;
         
-        int buffersize = (int)(sys_getsr() * 0.1); // default to 100ms
+        t_atom_long buffersize = (t_atom_long)(sys_getsr() * 0.1); // default to 100ms
         
         if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
         {

@@ -45,7 +45,7 @@ void pa_readbuffer2_dsp_perform(t_pa_readbuffer2_tilde *x, t_object *dsp64,
 
     // buffer
     float *tab;
-    long buffersize, nc;
+    t_atom_long buffersize, nc;
 
     t_buffer_obj* buffer = buffer_ref_getobject(x->m_buffer_reference);
     if(buffer)

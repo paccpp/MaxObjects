@@ -26,7 +26,7 @@ void pa_readbuffer1_dsp_perform(t_pa_readbuffer1_tilde *x, t_object *dsp64,
     double *out = outs[0];
     int n = sampleframes;
     float *tab;
-    long index, size, nc;
+    t_atom_long index, size, nc;
     
     t_buffer_obj* buffer = buffer_ref_getobject(x->m_buffer_reference);
     if(buffer)

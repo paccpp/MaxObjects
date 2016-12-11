@@ -14,12 +14,12 @@ static t_class* this_class = nullptr;
 
 struct t_pa_clip_tilde
 {
-    t_pxobject  m_obj;
-    double      m_min;
-    double      m_max;
+    t_pxobject      m_obj;
+    t_atom_float    m_min;
+    t_atom_float    m_max;
 };
 
-void pa_clip_tilde_set_minmax(t_pa_clip_tilde *x, double min, double max)
+void pa_clip_tilde_set_minmax(t_pa_clip_tilde *x, t_atom_float min, t_atom_float max)
 {
     if(min <= max)
     {
@@ -50,8 +50,8 @@ void pa_clip_tilde_dsp_perform(t_pa_clip_tilde* x, t_object* dsp64,
     double* in = ins[0];
     double* out = outs[0];
     
-    const double min = x->m_min;
-    const double max = x->m_max;
+    const t_atom_float min = x->m_min;
+    const t_atom_float max = x->m_max;
     double value = 0.f;
     
     while(vectorsize--)
@@ -93,8 +93,8 @@ void* pa_clip_tilde_new(t_symbol* name, long ac, t_atom* av)
     
     if(x)
     {
-        double min = -1.;
-        double max = 1.;
+        t_atom_float min = -1.;
+        t_atom_float max = 1.;
         
         // first argument set the minimum value
         if(ac >= 1 && (atom_gettype(av) == A_FLOAT || atom_gettype(av) == A_LONG))

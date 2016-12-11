@@ -18,7 +18,7 @@ struct t_pa_delay3_tilde
     t_pxobject  m_obj;
     
     double*     m_buffer;
-    long        m_buffersize;
+    t_atom_long m_buffersize;
     
     long        m_writer_playhead;
     long        m_reader_playhead;
@@ -137,7 +137,7 @@ void* pa_delay3_tilde_new(t_symbol *name, long argc, t_atom *argv)
         x->m_writer_playhead = 0;
         x->m_reader_playhead = 0;
         
-        long buffersize = (long)(sys_getsr() * 0.1); // default to 100ms
+        t_atom_long buffersize = (t_atom_long)(sys_getsr() * 0.1); // default to 100ms
         
         if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
         {

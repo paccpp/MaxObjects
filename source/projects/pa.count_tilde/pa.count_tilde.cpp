@@ -13,16 +13,16 @@ static t_class* this_class = nullptr;
 
 struct t_pa_count_tilde
 {
-    t_pxobject m_obj;
+    t_pxobject  m_obj;
     
-    long       m_min;
-    long       m_max;
-    long       m_value;
+    t_atom_long m_min;
+    t_atom_long m_max;
+    t_atom_long m_value;
     
-    long*      m_proxy;
+    long*       m_proxy;
 };
 
-void pa_count_tilde_setminmax(t_pa_count_tilde* x, long min, long max)
+void pa_count_tilde_setminmax(t_pa_count_tilde* x, t_atom_long min, t_atom_long max)
 {
     if(min > max) min = max;
     if(max < min) max = min;
