@@ -19,7 +19,7 @@ struct t_pa_delay4_tilde
     
     double*     m_buffer;
     t_atom_long m_buffersize;
-    long        m_writer_playhead;
+    t_atom_long m_writer_playhead;
 };
 
 void pa_delay4_tilde_delete_buffer(t_pa_delay4_tilde* x)
@@ -56,7 +56,7 @@ void pa_delay4_tilde_create_buffer(t_pa_delay4_tilde* x)
 //! @details idx will be wrapped between low and high buffer boundaries in a circular way.
 double get_buffer_value(t_pa_delay4_tilde* x, long idx)
 {
-    const long buffersize = x->m_buffersize;
+    const t_atom_long buffersize = x->m_buffersize;
     
     // wrap idx between low and high buffer boundaries.
     while(idx < 0) idx += buffersize;
@@ -81,7 +81,7 @@ void pa_delay4_tilde_perform64(t_pa_delay4_tilde* x, t_object* dsp64,
     double y1, y2, delta;
     double delay_size_samps = 0.f;
     double* buffer = x->m_buffer;
-    const long buffersize = x->m_buffersize;
+    const t_atom_long buffersize = x->m_buffersize;
     double sample_to_write = 0.f;
     long reader;
     

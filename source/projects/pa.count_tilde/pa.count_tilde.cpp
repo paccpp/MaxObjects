@@ -58,7 +58,7 @@ void pa_count_tilde_perform64(t_pa_count_tilde* x, t_object* dsp64,
     double* out = outs[0];
     
     // cache our value
-    int value = x->m_value;
+    t_atom_long value = x->m_value;
     
     while(vecsize--)
     {

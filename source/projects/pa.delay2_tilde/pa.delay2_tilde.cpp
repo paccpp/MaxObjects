@@ -20,7 +20,7 @@ struct t_pa_delay2_tilde
     
     double*     m_buffer;
     t_atom_long m_buffersize;
-    int         m_count;
+    t_atom_long m_count;
 };
 
 void pa_delay2_tilde_delete_buffer(t_pa_delay2_tilde* x)
@@ -69,11 +69,11 @@ void pa_delay2_tilde_perform64(t_pa_delay2_tilde* x, t_object* dsp64,
     double* out = outs[0];
     
     double* buffer = x->m_buffer;
-    int count = x->m_count;
+    t_atom_long count = x->m_count;
     double* buffer_playhead = NULL;
     double sample_to_write = 0.f;
     
-    int buffersize = x->m_buffersize;
+    t_atom_long buffersize = x->m_buffersize;
     
     while(vecsize--)
     {

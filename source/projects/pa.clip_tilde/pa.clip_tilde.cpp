@@ -99,13 +99,13 @@ void* pa_clip_tilde_new(t_symbol* name, long ac, t_atom* av)
         // first argument set the minimum value
         if(ac >= 1 && (atom_gettype(av) == A_FLOAT || atom_gettype(av) == A_LONG))
         {
-            min = atom_getlong(av);
+            min = atom_getfloat(av);
         }
         
         // second argument set the maximum value
         if(ac >= 2 && (atom_gettype(av+1) == A_FLOAT || atom_gettype(av+1) == A_LONG))
         {
-            max = atom_getlong(av+1);
+            max = atom_getfloat(av+1);
         }
         
         pa_clip_tilde_set_minmax(x, min, max);
