@@ -28,4 +28,5 @@ Pour installer ce répertoire et compiler les externals, se reporter au réperto
 
 ## Liens
 
+- paccpp wiki => ["Anatomie-d'un-objet-Max"](https://github.com/paccpp/paccpp/wiki/Anatomie-d'un-objet-Max)
 - [max-sdk](https://cycling74.com/sdk/MaxSDK-7.1.0/html/index.html)
