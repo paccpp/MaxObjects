@@ -18,10 +18,10 @@ struct t_pa_delay3_tilde
     t_pxobject  m_obj;
     
     double*     m_buffer;
-    size_t      m_buffersize;
+    long        m_buffersize;
     
-    size_t      m_writer_playhead;
-    size_t      m_reader_playhead;
+    long        m_writer_playhead;
+    long        m_reader_playhead;
 };
 
 void pa_delay3_tilde_delete_buffer(t_pa_delay3_tilde* x)
@@ -137,7 +137,7 @@ void* pa_delay3_tilde_new(t_symbol *name, long argc, t_atom *argv)
         x->m_writer_playhead = 0;
         x->m_reader_playhead = 0;
         
-        int buffersize = sys_getsr() * 0.1; // default to 100ms
+        long buffersize = (long)(sys_getsr() * 0.1); // default to 100ms
         
         if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
         {

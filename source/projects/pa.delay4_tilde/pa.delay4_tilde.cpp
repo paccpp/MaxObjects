@@ -18,8 +18,8 @@ struct t_pa_delay4_tilde
     t_pxobject  m_obj;
     
     double*     m_buffer;
-    size_t      m_buffersize;
-    size_t      m_writer_playhead;
+    long        m_buffersize;
+    long        m_writer_playhead;
 };
 
 void pa_delay4_tilde_delete_buffer(t_pa_delay4_tilde* x)
@@ -54,9 +54,9 @@ void pa_delay4_tilde_create_buffer(t_pa_delay4_tilde* x)
 
 //! @brief returns a buffer value at a given index position.
 //! @details idx will be wrapped between low and high buffer boundaries in a circular way.
-double get_buffer_value(t_pa_delay4_tilde* x, int idx)
+double get_buffer_value(t_pa_delay4_tilde* x, long idx)
 {
-    const size_t buffersize = x->m_buffersize;
+    const long buffersize = x->m_buffersize;
     
     // wrap idx between low and high buffer boundaries.
     while(idx < 0) idx += buffersize;
@@ -81,7 +81,7 @@ void pa_delay4_tilde_perform64(t_pa_delay4_tilde* x, t_object* dsp64,
     double y1, y2, delta;
     double delay_size_samps = 0.f;
     double* buffer = x->m_buffer;
-    const size_t buffersize = x->m_buffersize;
+    const long buffersize = x->m_buffersize;
     double sample_to_write = 0.f;
     long reader;
     
@@ -167,7 +167,7 @@ void* pa_delay4_tilde_new(t_symbol *name, long argc, t_atom *argv)
         x->m_buffer = nullptr;
         x->m_writer_playhead = 0;
         
-        int buffersize = sys_getsr() * 0.1; // default to 100ms
+        long buffersize = (long)(sys_getsr() * 0.1); // default to 100ms
         
         if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
         {

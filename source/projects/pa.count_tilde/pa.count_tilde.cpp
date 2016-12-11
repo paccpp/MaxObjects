@@ -124,13 +124,13 @@ void* pa_count_tilde_new(t_symbol *name, long argc, t_atom *argv)
         // first argument set the minimum count value
         if(argc >= 1 && (atom_gettype(argv) == A_FLOAT || atom_gettype(argv) == A_LONG))
         {
-            x->m_min = atom_getfloat(argv);
+            x->m_min = atom_getlong(argv);
         }
         
         // second argument set the maximum count value
         if(argc >= 2 && (atom_gettype(argv+1) == A_FLOAT || atom_gettype(argv+1) == A_LONG))
         {
-            x->m_max = atom_getfloat(argv+1);
+            x->m_max = atom_getlong(argv+1);
         }
         
         pa_count_tilde_setminmax(x, x->m_min, x->m_max);

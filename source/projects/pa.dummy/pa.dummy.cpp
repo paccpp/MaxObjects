@@ -76,7 +76,7 @@ void pa_dummy_assist(t_pa_dummy* x, void* unused, t_assist_function io, long ind
 {
     if(io == ASSIST_INLET)
     {
-        sprintf(string_dest, "(bang/int/float/symbol) inlet %ld", index);
+        strncpy(string_dest, "(bang/int/float/symbol) inlet)", ASSIST_STRING_MAXSIZE);
     }
     else if(io == ASSIST_OUTLET)
     {
