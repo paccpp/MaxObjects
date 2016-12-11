@@ -69,9 +69,13 @@ void pa_sah_tilde_assist(t_pa_sah_tilde* x, void* unused,
     if(io == ASSIST_INLET)
     {
         if(index == 0)
+        {
             strncpy(string_dest, "(signal) Values to sample", ASSIST_STRING_MAXSIZE);
+        }
         else
+        {
             strncpy(string_dest, "(signal) Trigger input", ASSIST_STRING_MAXSIZE);
+        }
     }
     else if(io == ASSIST_OUTLET)
     {

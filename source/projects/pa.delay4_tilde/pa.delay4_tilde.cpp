@@ -144,9 +144,13 @@ void pa_delay4_tilde_assist(t_pa_delay4_tilde* x, void* unused,
     if(io == ASSIST_INLET)
     {
         if(index == 0)
+        {
             strncpy(string_dest, "(signal) input to be delayed", ASSIST_STRING_MAXSIZE);
+        }
         else
+        {
             strncpy(string_dest, "(signal) delay size in samps", ASSIST_STRING_MAXSIZE);
+        }
     }
     else if(io == ASSIST_OUTLET)
     {
