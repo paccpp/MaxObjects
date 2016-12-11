@@ -22,6 +22,7 @@ Pour installer ce répertoire et compiler les externals, se reporter au réperto
 |[pa.delay4~](source/projects/pa.delay4_tilde)  | A signal driven variable delay line |
 |[pa.delay5~](source/projects/pa.delay5_tilde)  | A single writer / multiple readers delay line |
 |[pa.readbuffer1~](source/projects/pa.readbuffer1_tilde)  | Access a Max buffer~ object |
+|[pa.readbuffer2~](source/projects/pa.readbuffer2_tilde)  | Read samples in a Max buffer~ at a given speed |
 
 ## Liens
 
